@@ -117,7 +117,7 @@
 {
     BOOL animationsWereEnabled = [UIView areAnimationsEnabled];
     //We only want to enable animations if the index path is before or within our visible cells
-    BOOL animationsEnabled = ([(NSIndexPath *)[self.collectionView.indexPathsForVisibleItems lastObject] compare:indexPath] != NSOrderedAscending) && animationsWereEnabled;
+    BOOL animationsEnabled = ([(NSIndexPath *)[[self.collectionView.indexPathsForVisibleItems sortedArrayUsingSelector:@selector(compare:)] lastObject] compare:indexPath] != NSOrderedAscending) && animationsWereEnabled;
 
     [UIView setAnimationsEnabled:animationsEnabled];
 
